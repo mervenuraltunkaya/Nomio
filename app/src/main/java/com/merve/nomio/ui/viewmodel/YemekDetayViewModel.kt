@@ -1,8 +1,11 @@
 package com.merve.nomio.ui.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.merve.nomio.data.repo.YemeklerRepository
+import com.merve.nomio.room.YemekAciklamaDao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -10,9 +13,22 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class YemekDetayViewModel @Inject constructor(var yemeklerRepository: YemeklerRepository): ViewModel() {
+class YemekDetayViewModel @Inject constructor(var yemeklerRepository: YemeklerRepository, var yemekAciklamaDao: YemekAciklamaDao): ViewModel() {
 
-     fun sepeteEkle(yemek_adi:String,
+    private val _aciklama = MutableLiveData<String>()
+    val aciklama: LiveData<String> = _aciklama
+
+    fun aciklamayiYukle(yemekAdi: String){
+        CoroutineScope(Dispatchers.Main).launch {
+            val sonuc= yemekAciklamaDao.getAciklama(yemekAdi)
+
+            Log.d("YemekDetayViewModel", "Room'dan gelen açıklama: ${sonuc?.aciklama}")
+
+            _aciklama.value= sonuc?.aciklama ?: "Açıklama Bulunamadı."
+        }
+    }
+
+    fun sepeteEkle(yemek_adi:String,
                            yemek_resim_adi: String,
                            yemek_fiyat: Int,
                            yemek_siparis_adet: Int,
@@ -32,6 +48,7 @@ class YemekDetayViewModel @Inject constructor(var yemeklerRepository: YemeklerRe
             }
         }
     }
+
 
 
 

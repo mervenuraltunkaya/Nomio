@@ -83,5 +83,18 @@ class YemekDetayFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val gelenYemek = args.yemek
+
+        viewModel.aciklamayiYukle(gelenYemek.yemek_adi)
+
+        viewModel.aciklama.observe(viewLifecycleOwner) { metin ->
+            binding.tVAciklama.text = metin
+        }
+    }
+
 }
 
