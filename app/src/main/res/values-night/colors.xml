@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="anaRenk">#FF6B6B</color>
+    <color name="vurguRenk">#84DCCF</color>
+    <color name="arkaPlan">	#121212</color>
+    <color name="yaziRenk1">#E0E0E0</color>
+    <color name="yaziRenk2">#686767</color>
+</resources>

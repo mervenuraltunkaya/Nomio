@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/iWSepet"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/tVSepetYemekAdi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Pizza"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/yaziRenk1"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toEndOf="@+id/iWSepet"
+            app:layout_constraintTop_toTopOf="@+id/iWSepet"
+            app:layout_constraintEnd_toStartOf="@+id/tvSepetToplamFiyat"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/tvSepetFiyat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="450 ₺"
+            android:textColor="@color/yaziRenk1"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tVSepetYemekAdi"
+            app:layout_constraintTop_toBottomOf="@+id/tVSepetYemekAdi" />
+
+        <TextView
+            android:id="@+id/tvSepetAdet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 adet"
+            android:textColor="@color/yaziRenk2"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tvSepetFiyat"
+            app:layout_constraintTop_toBottomOf="@+id/tvSepetFiyat" />
+
+        <TextView
+            android:id="@+id/tvSepetToplamFiyat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Toplam: 1350 ₺"
+            android:textColor="@color/yaziRenk1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="8dp" />
+
+        <ImageButton
+            android:id="@+id/iBtnSil"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_close"
+            android:contentDescription="Sil"
+            app:tint="@color/yaziRenk2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
