@@ -28,10 +28,17 @@
         <argument
             android:name="yemek"
             app:argType="com.merve.nomio.data.entity.yemek.Yemekler" />
+        <action
+            android:id="@+id/detaydanAnasayfaGecis"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
     <fragment
         android:id="@+id/sepetFragment"
         android:name="com.merve.nomio.ui.fragment.SepetFragment"
         android:label="fragment_sepet"
-        tools:layout="@layout/fragment_sepet" />
+        tools:layout="@layout/fragment_sepet" >
+        <action
+            android:id="@+id/sepettenAnasayfaGecis"
+            app:destination="@id/anasayfaFragment" />
+    </fragment>
 </navigation>

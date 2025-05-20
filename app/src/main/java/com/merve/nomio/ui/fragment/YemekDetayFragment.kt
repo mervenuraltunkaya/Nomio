@@ -77,6 +77,10 @@ class YemekDetayFragment : Fragment() {
             }
         }
 
+        binding.iBtnDetayKapat.setOnClickListener {
+            Navigation.gecisYap(it, YemekDetayFragmentDirections.detaydanAnasayfaGecis())
+        }
+
         return binding.root
     }
 }

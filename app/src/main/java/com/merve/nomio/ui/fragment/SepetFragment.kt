@@ -6,18 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import com.merve.nomio.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.merve.nomio.databinding.FragmentSepetBinding
 import com.merve.nomio.ui.adapter.SepetAdapter
 import com.merve.nomio.ui.viewmodel.SepetViewModel
+import com.merve.nomio.utils.gecisYap
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SepetFragment : Fragment() {
     private lateinit var binding: FragmentSepetBinding
     private val viewModel: SepetViewModel by viewModels()
-    private lateinit var adapter: SepetAdapter // 🔁 Adapter artık burada tanımlı
+    private lateinit var adapter: SepetAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +31,7 @@ class SepetFragment : Fragment() {
         binding = FragmentSepetBinding.inflate(inflater, container, false)
 
         binding.rWSepet.layoutManager = LinearLayoutManager(requireContext())
-        adapter = SepetAdapter(requireContext(), emptyList(), viewModel) // adapter 1 kez oluşturuluyor
+        adapter = SepetAdapter(requireContext(), emptyList(), viewModel)
         binding.rWSepet.adapter = adapter
 
         viewModel.sepetYemekler.observe(viewLifecycleOwner) { sepetListesi ->
@@ -46,8 +51,27 @@ class SepetFragment : Fragment() {
             }
         }
 
+        binding.iBtnSepetKapat.setOnClickListener {
+            Navigation.gecisYap(it, SepetFragmentDirections.sepettenAnasayfaGecis())
+        }
+
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action = SepetFragmentDirections.sepettenAnasayfaGecis()
+                    findNavController().navigate(action)
+                }
+            }
+        )
+    }
+
+
 
     override fun onResume() {
         super.onResume()
