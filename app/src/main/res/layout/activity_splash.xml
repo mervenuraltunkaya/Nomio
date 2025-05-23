@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9">
+    android:background="@color/arkaPlan">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/splashAnimation"
@@ -11,6 +11,6 @@
         android:layout_height="300dp"
         android:layout_centerInParent="true"
         app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_fileName="nomio_splash.json" />
+        app:lottie_fileName="nomio_splash.json"
+        app:lottie_loop="false" />
 </RelativeLayout>
