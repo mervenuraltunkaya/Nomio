@@ -33,7 +33,7 @@ class YemekDetayFragment : Fragment() {
     ): View {
         binding = FragmentYemekDetayBinding.inflate(inflater, container, false)
 
-        val gelenYemek = args.yemek // ✅ sadece bunu kullan
+        val gelenYemek = args.yemek
 
         Log.d("DetayFragment", "NAVARGS ile gelen yemek: ${gelenYemek.yemek_adi}")
 

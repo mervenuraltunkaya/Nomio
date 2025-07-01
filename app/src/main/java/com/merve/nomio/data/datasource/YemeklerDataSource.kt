@@ -13,12 +13,6 @@ class YemeklerDataSource (var yemeklerDao: YemeklerDao) {
         return@withContext yemeklerDao.yemekleriYukle().yemekler
     }
 
-    /*suspend fun sepeteEkle(yemek_adi: String, yemek_resim_adi: String, yemek_fiyat: Int, yemek_siparis_adet: Int, kullanici_adi: String){
-        withContext(Dispatchers.IO){
-            yemeklerDao.sepeteEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, kullanici_adi)
-        }
-    }*/
-
     suspend fun sepeteEkle(
         yemek_adi: String,
         yemek_resim_adi: String,
